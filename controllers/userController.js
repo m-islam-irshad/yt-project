@@ -417,13 +417,17 @@ var polymorphicMany = async (req, res)=>{
 
 
     //.....video to tag 
-    let data = await Video.findAll({
-        include:[{
-            model:Tags
-        }]
+    // let data = await Video.findAll({
+    //     include:[{
+    //         model:Tags
+    //     }]
         
-    })
+    // })
    
+    // ......... Tag to video
+    let data = await Tags.findAll({
+        include:[Video, Image]
+    })
     
     res.status(200).json(data);
 
